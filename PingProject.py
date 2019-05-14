@@ -11,6 +11,15 @@ def ping(host):
 
     # Ping
     return subprocess.call(args, shell=need_sh) == 0
-
 # test call
-print(ping("192.168.5.139"))
+# print(ping("192.168.5.139"))
+isonline == 1
+while isonline == 1:
+    ping("192.168.5.40")
+    print(ping("192.168.5.40")
+    if ping == "True":
+        print("its working")
+    else:
+        isonline == 0
+    print("The pi is still online")
+
