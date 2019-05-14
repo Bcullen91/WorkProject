@@ -1,17 +1,11 @@
-def ping(host):
-    """
-    Returns True if host responds to a ping request
-    """
-    import subprocess, platform
+import os
 
-    # Ping parameters as function of OS
-    ping_str = "-n 1" if  platform.system().lower()=="windows" else "-c 1"
-    args = "ping " + " " + ping_str + " " + host
-    need_sh = False if  platform.system().lower()=="windows" else True
+hostname = "192.168.5.139" #change to any ip on your network, im using my iphones ip.
+# you might have to change the -c to -n for windows
+response = os.system("ping -c 1 " + hostname)
 
-    # Ping
-    return subprocess.call(args, shell=need_sh) == 0
-# test call
-print(ping("192.168.5.139"))
-
-
+#and then check the response...
+if response == 0:
+    print(hostname, 'is up!')
+else:
+    print(hostname, 'is down!')
