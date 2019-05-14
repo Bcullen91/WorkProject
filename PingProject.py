@@ -19,3 +19,6 @@ if dlResponse == 0:
     print(dlHostName, 'is up!')
 else:
     print(dlHostName, 'is down!')
+
+
+    #Yes, I commented out your code - deal with it
