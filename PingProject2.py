@@ -27,7 +27,7 @@ while running == "yes":
             time.sleep(1)
         else:
             print("iPhone is now Offline")
-            waittime == 3
+            waittime= waittime + 3
             print("Looping")
             break
     continue
