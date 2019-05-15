@@ -1,15 +1,10 @@
-import os
+import time
 
-hostname = "192.168.5.139" #change to any ip on your network, im using my iphones ip.
-
-# you might have to change the -c to -n for windows
-response = os.system("ping -c 10 " + hostname)
-
-#and then check the response...
-
-if response == 0:
-    print(hostname, 'is up!')
+waitime= int(5)
+while waitime > 0:
+    print(waitime)
+    waitime= waitime - 1
+    time.sleep(1)
 else:
-    print(hostname, 'is down!')
-
+    print("Waittime is 0 now")
 

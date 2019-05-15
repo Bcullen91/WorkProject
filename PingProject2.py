@@ -13,15 +13,23 @@ def ping(host):
     command = ['ping', param, '1', host]
     return subprocess.call(command) == 0
 
-run= str("yes")
-while run == "yes":
-    print("Looping")
-    while ping("192.168.5.139") == True:
-        print("iPhone is Online")
+waittime= int(0)
+running= str("yes")
+while running == "yes":
+    while waittime > 0:
         time.sleep(1)
-    else:
-        print("iPhone is now Offline")
+        waittime = waittime - 1
+        print(waittime)
         continue
-time.sleep(15)
-
-
+    while waittime == 0:
+        while ping("192.168.5.139") == True:
+            print("iPhone is Online")
+            time.sleep(1)
+        else:
+            print("iPhone is now Offline")
+            waittime == 3
+            print("Looping")
+            break
+    continue
+else:
+    print("Some error occurred and the script is not running")
