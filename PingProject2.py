@@ -17,9 +17,9 @@ waittime= int(0)
 running= str("yes")
 while running == "yes":
     while waittime > 0:
+        print(waittime)
         time.sleep(1)
         waittime = waittime - 1
-        print(waittime)
         continue
     while waittime == 0:
         while ping("192.168.5.139") == True:
