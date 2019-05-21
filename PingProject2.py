@@ -5,10 +5,6 @@ import RPi.GPIO as GPIO
 
 host= str("192.168.5.137")
 
-GPIO.setmode(GPIO.BCM)
-# I have the relay plugged into GPIO 2, which is in slot 13. 
-GPIO.setup(2, GPIO.OUT)
-GPIO.output(2, GPIO.HIGH)
 
 def ping(host):
     """
@@ -39,10 +35,6 @@ while running == "yes":           # Starts the infinite loops since running will
     while waittime == 0:           
         while ping(host) == True:           
             print("iPhone is Online")
-            GPIO.output(2, GPIO.LOW)
-            print("Turning on the relay")
-            time.sleep(3)
-            GPIO.cleanup()
             waittime= 3
             offTime= 0
             break
