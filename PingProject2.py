@@ -1,7 +1,11 @@
 import platform    # For getting the operating system name
 import subprocess  # For executing a shell command
 import time
+import RPi.GPIO as GPIO
 
+GPIO.setmode(GPIO.BCM)
+# I have the relay plugged into GPIO 2, which is in slot 13. 
+pin = 2
 host= str("192.168.5.139")
 
 def ping(host):
@@ -25,17 +29,20 @@ while running == "yes":           # Starts the infinite loops since running will
         offTime= 0
     else:
         pass
-    while waittime > 0:          # If waittime is greater than 0 it prints the waitime and then waits 1 second
+    while waittime > 0:          
         print("Waiting " + str(waittime) + " seconds")
         time.sleep(1)
         waittime = waittime - 1
         continue
-    while waittime == 0:           # If waittime is 0 it will run the ping command. 
-        while ping(host) == True:           # if the ping is successful it will return True
+    while waittime == 0:           
+        while ping(host) == True:           
             print("iPhone is Online")
+            GPIO.output(2, GPIO.LOW)
+            print("Turning on the relay")
+            time.sleep(3)
+            GPIO.cleanup()
             waittime= 3
             offTime= 0
-            print("The iPhone has been offline for " + str(offTime) + " seconds.")
             break
         else:           
             print("iPhone is now Offline")
