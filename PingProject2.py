@@ -3,10 +3,12 @@ import subprocess  # For executing a shell command
 import time
 import RPi.GPIO as GPIO
 
+host= str("192.168.5.137")
+
 GPIO.setmode(GPIO.BCM)
 # I have the relay plugged into GPIO 2, which is in slot 13. 
-pin = 2
-host= str("192.168.5.139")
+GPIO.setup(2, GPIO.OUT)
+GPIO.output(2, GPIO.HIGH)
 
 def ping(host):
     """
