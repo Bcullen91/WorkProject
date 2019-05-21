@@ -8,7 +8,7 @@ GPIO.setwarnings(False)
 GPIO.Setmode(GPIO.BOARD)
 GPIO.setup(12, GPIO.OUT)
 
-def reboot:
+def reboot(x):
     GPIO.output(12, GPIO.HIGH)
     for i in range(0,10):
         print(i)
@@ -33,7 +33,7 @@ running= str("yes")          # Sets the variable running to yes so it will alway
 while running == "yes":           # Starts the infinite loops since running will never not be "yes"
     if offTime > 60:
         print("Your device is rebooting")
-        reboot
+        reboot(x)
         time.sleep(10)          # This will eventually be 480 seconds, which is 8 minutes, 
         offTime= 0
     else:
