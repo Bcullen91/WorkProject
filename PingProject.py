@@ -1,18 +1,21 @@
 import time
 import RPi.GPIO as GPIO
 
+# Pin definitions
+led_pin = 2
+
+# Suppress warnings
+GPIO.setwarnings(False)
+
+# Use "GPIO" pin numbering
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(2, GPIO.OUT)
-GPIO.output(2, GPIO.HIGH)
+# Set LED pin as output
+GPIO.setup(led_pin, GPIO.OUT)
 
-try:
-    GPIO.output(2, GPIO.LOW)
-    print("One")
-    time.sleep(3)
-    GPIO.cleanup()
-    print("Goodbye")
-except KeyboardInterrupt:
-    print("Quit")
-    GPIO.cleanup()
-    
+# Blink forever
+while True:
+    GPIO.output(led_pin, GPIO.HIGH) # Turn LED on
+    time.sleep(1)                   # Delay for 1 second
+    GPIO.output(led_pin, GPIO.LOW)  # Turn LED off
+    time.sleep(1)                   # Delay for 1 second
