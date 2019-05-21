@@ -1,15 +1,22 @@
-import os
-
-hostname = "192.168.5.139" #change to any ip on your network, im using my iphones ip.
-
-# you might have to change the -c to -n for windows
-response = os.system("ping -c 10 " + hostname)
-
-#and then check the response...
-
-if response == 0:
-    print(hostname, 'is up!')
-else:
-    print(hostname, 'is down!')
+import time
+import RPi.GPIO as GPIO
 
 
+# Suppress warnings
+GPIO.setwarnings(False)
+
+# Use "GPIO" pin numbering
+GPIO.setmode(GPIO.BOARD)
+
+# Set LED pin as output
+GPIO.setup(12, GPIO.OUT)
+
+
+GPIO.output(12, GPIO.HIGH) # Turn LED on
+print("x")
+time.sleep(1)                   # Delay for 1 second
+GPIO.output(12, GPIO.LOW)  # Turn LED off
+print("y")
+time.sleep(1)                   # Delay for 1 second
+GPIO.cleanup()
+print("Finshed")
