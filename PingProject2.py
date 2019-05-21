@@ -4,7 +4,17 @@ import time
 import RPi.GPIO as GPIO
 
 host= str("192.168.5.137")
+GPIO.setwarnings(False)
+GPIO.Setmode(GPIO.BOARD)
+GPIO.setup(12, GPIO.OUT)
 
+def reboot:
+    GPIO.output(12, GPIO.HIGH)
+    for i in range(0,10):
+        print(i)
+        time.sleep(1)
+    GPIO.output(12, GPIO.LOW)
+    print("Your device has been rebooted")
 
 def ping(host):
     """
@@ -22,7 +32,8 @@ waittime= int(0)         # Sets waittime to 0 so it will immediately start runni
 running= str("yes")          # Sets the variable running to yes so it will always run constantly
 while running == "yes":           # Starts the infinite loops since running will never not be "yes"
     if offTime > 60:
-        print("This will eventually be a signal to power off the kit")
+        print("Your device is rebooting")
+        reboot
         time.sleep(10)          # This will eventually be 480 seconds, which is 8 minutes, 
         offTime= 0
     else:
