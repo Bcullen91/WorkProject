@@ -3,10 +3,20 @@ import subprocess  # For executing a shell command
 import time
 import RPi.GPIO as GPIO
 
-host= str("192.168.5.137")
+host= str("192.168.5.137")   # Change this IP address to whatever you want to test connection to. 
+
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(12, GPIO.OUT)
+
+def reboot():
+    GPIO.output(12, GPIO.HIGH)
+    for i in range(30,0):
+        print("Your device will be powered on in " + i + " seconds")
+        time.sleep(1)
+    GPIO.output(12, GPIO.LOW)
+    sincereboot = 420
+    print("Your device has been rebooted and should be powering on now.")
 
 
 def ping(host):
@@ -16,23 +26,24 @@ def ping(host):
     """
     # Option for the number of packets as a function of
     param = '-n' if platform.system().lower()=='windows' else '-c'
-    # Building the command. Ex: "ping -c 1 google.com"
+    # Building the command. Ex: "ping -c 1 google.com" [ping, system, number of pings, host ip]
     command = ['ping', param, '1', host]
     return subprocess.call(command) == 0
 
 offTime= int(0)         # Creates a variable that will be how long its been offline
 waittime= int(0)         # Sets waittime to 0 so it will immediately start running
-running= str("yes")          # Sets the variable running to yes so it will always run constantly
-while running == "yes":           # Starts the infinite loops since running will never not be "yes"
+running= str("yes") 
+sincereboot = int(420)     # Sets variable for since reboot so it wont keep power cycling (420 seconds for 7 minutes)
+
+while running == "yes":       # Starts the infinite loops since running will never not be "yes"
+    while sincereboot > 0:
+        time.sleep(1)
+        sincereboot = sincereboot - 1
+        continue
     if offTime > 60:
         print("Your device is rebooting")
-        GPIO.output(12, GPIO.HIGH)
-        for i in range(0,10):
-            print(i)
-            time.sleep(1)
-        GPIO.output(12, GPIO.LOW)
-        print("Your device has been rebooted")
-        time.sleep(10)          # This will eventually be 480 seconds, which is 8 minutes, 
+        reboot()
+        time.sleep(10)           
         offTime= 0
     else:
         pass
@@ -51,8 +62,8 @@ while running == "yes":           # Starts the infinite loops since running will
             print("iPhone is now Offline")
             offTime= offTime + 5
             print("The iPhone has been offline for " + str(offTime) + " seconds")
-            print("Looping")
             break
     continue
-else:
-    print("Some error occurred and the script is not running")
+else
+    running= str("yes")
+    print("Some error occurred and the the 'yes' loop failed.")
