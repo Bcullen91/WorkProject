@@ -17,10 +17,11 @@ running= str("yes")
 # GPIO.setup(12, GPIO.OUT)
 
 #Logger config
+timestr = time.strftime("%Y%m%d")
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(levelname)-8s %(message)s',
-                    datefmt='%m-%d %H:%M:%S',
-                    filename='./myapp.log',
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    filename='./myapp('+timestr +').log',
                     filemode='a')
 # Creating handler that writes debug messages to sys.stderr
 console = logging.StreamHandler()
@@ -33,8 +34,10 @@ console.setFormatter(formatter)
 logging.getLogger('').addHandler(console)
 # Set logger variable
 logger1 = logging.getLogger('mainLog')
+timestr2 = time.strftime("%Y-%m-%d")
 
 host = str("8.8.8.8")
+logger1.info("LOG STARTED: "+ timestr2)
 logger1.info("Host Assigned: " + host)
 
 
@@ -77,13 +80,13 @@ while running == "yes":
         continue
     while waittime == 0:           
         while ping(host) == True:
-            logger1.info("CONNECTION ESTABLISHED")
+            logger1.info("TARGET (SUCCESS): " + host)
             print(" Google is Online")
             waittime= 3
             offTime= 0
             break
         else:           
-            logger1.error("CONNECTION FAILED")
+            logger1.warn("TARGET (FAILED): " + host)
             print(" Google is now Offline")
             offTime= offTime + 7
             print(" The Google has been offline for: ",end="")
