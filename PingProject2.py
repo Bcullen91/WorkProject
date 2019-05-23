@@ -12,7 +12,7 @@ waittime= int(0)         # Sets waittime to 0 so it will immediately start runni
 running= str("yes") 
 
 
-
+GPIO.cleanup()
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(12, GPIO.OUT)
@@ -20,10 +20,11 @@ GPIO.setup(12, GPIO.OUT)
 def reboot():
     GPIO.output(12, GPIO.HIGH)
     for i in range(reboottime, 0, -1):
-        print("Your device will be powered on in " + i + " seconds")
+        print("Your device will be powered on in " + str(i) + " seconds")
         time.sleep(1)
     GPIO.output(12, GPIO.LOW)
     sincereboot = timeafterreboot
+    GPIO.cleanup()
     print("Your device has been rebooted and should be powering on now.")
 
 def ping(host):
@@ -42,7 +43,7 @@ while running == "yes":       # Starts the infinite loops since running will nev
         time.sleep(1)
         sincereboot = sincereboot - 1
         continue
-    if offTime > 60:
+    if offTime > 20:
         print("Your device is rebooting")
         reboot()
         time.sleep(10)           
