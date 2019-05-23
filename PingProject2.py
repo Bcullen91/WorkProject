@@ -24,7 +24,6 @@ def reboot():
         time.sleep(1)
     GPIO.output(12, GPIO.LOW)
     sincereboot = timeafterreboot
-    #ping(host) == True   ---- This did not work....
     print("Your device has been rebooted and should be powering on now.")
 
 def ping(host):
@@ -56,7 +55,8 @@ while running == "yes":       # Starts the infinite loops since running will nev
         waittime = waittime - 1
         continue
     while waittime == 0:           
-        while ping(host) == True:           
+        ping(host)
+        if ping(host) == True:
             print("iPhone is Online")
             waittime= 3
             offTime= 0
