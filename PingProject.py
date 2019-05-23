@@ -88,8 +88,8 @@ while running == "yes":
             offTime= offTime + 7
             print(" The Google has been offline for: ",end="")
             print(str(offTime) + " seconds",end='\r', flush=True)
+            logger1.info("CONNECTION DOWN FOR: " + str(offTime) + " SECONDS")
             break
-        logger1.info("CONNECTION DOWN FOR: ")
     continue
 else:
     logger1.error("PROGRAM FAILED")
