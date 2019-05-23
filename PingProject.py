@@ -40,6 +40,7 @@ logger1.info("Host Assigned: " + host)
 
 def reboot():
     # GPIO.output(12, GPIO.HIGH)
+    logger1.info("REBOOT INITIATED")
     for i in range(3, 0, -1):
         print("Your device will be powered on in: ",end="",flush=True)
         print(str(i) + " seconds",end='\r',flush=True)
@@ -61,6 +62,7 @@ while running == "yes":
         continue
     while offTime > 20:
         print(" Your device is rebooting")
+        logger1.info("INITIALIZE REBOOT")
         reboot()
         time.sleep(30)
         sincereboot = 20
@@ -75,16 +77,20 @@ while running == "yes":
         continue
     while waittime == 0:           
         while ping(host) == True:
+            logger1.info("CONNECTION ESTABLISHED")
             print(" Google is Online")
             waittime= 3
             offTime= 0
             break
         else:           
+            logger1.error("CONNECTION FAILED")
             print(" Google is now Offline")
             offTime= offTime + 7
             print(" The Google has been offline for: ",end="")
             print(str(offTime) + " seconds",end='\r', flush=True)
             break
+        logger1.info("CONNECTION DOWN FOR: ")
     continue
 else:
+    logger1.error("PROGRAM FAILED")
     print(" Some error occurred and the the 'yes' loop failed.")
