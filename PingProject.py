@@ -20,7 +20,6 @@ def reboot():
         print("Your device will be powered on in " + str(i) + " seconds")
         time.sleep(1)
     GPIO.output(12, GPIO.LOW)
-    sincereboot = 20
     print("Your device has been rebooted and should be powering on now.")
 
 def ping(host):
@@ -38,6 +37,7 @@ while running == "yes":
         print("Your device is rebooting")
         reboot()
         time.sleep(10)
+        sincereboot = 20
         print("Testing after the reboot")
         offTime= 0
         break
@@ -48,14 +48,14 @@ while running == "yes":
         continue
     while waittime == 0:           
         while ping(host) == True:
-            print("iPhone is Online")
+            print("Google is Online")
             waittime= 3
             offTime= 0
             break
         else:           
-            print("iPhone is now Offline")
+            print("Google is now Offline")
             offTime= offTime + 7
-            print("The iPhone has been offline for " + str(offTime) + " seconds")
+            print("The Google has been offline for " + str(offTime) + " seconds")
             break
     continue
 else:
