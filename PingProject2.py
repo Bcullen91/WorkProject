@@ -24,7 +24,6 @@ def reboot():
         time.sleep(1)
     GPIO.output(12, GPIO.LOW)
     sincereboot = timeafterreboot
-    GPIO.cleanup()
     print("Your device has been rebooted and should be powering on now.")
 
 def ping(host):
