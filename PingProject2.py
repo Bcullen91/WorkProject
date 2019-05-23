@@ -39,15 +39,16 @@ def ping(host):
 
 while running == "yes":       # Starts the infinite loops since running will never not be "yes"
     while sincereboot > 0:
+        print("It has only been " + str(sincereboot) + " seconds since the last reboot")
         time.sleep(1)
         sincereboot = sincereboot - 1
         continue
-    if offTime > 20:
+    while offTime > 20:
         print("Your device is rebooting")
         reboot()
         time.sleep(10)           
         offTime= 0
-        continue
+        break
     while waittime > 0:          
         print("Waiting " + str(waittime) + " seconds")
         time.sleep(1)
@@ -61,7 +62,7 @@ while running == "yes":       # Starts the infinite loops since running will nev
             break
         else:           
             print("iPhone is now Offline")
-            offTime= offTime + 5
+            offTime= offTime + 7
             print("The iPhone has been offline for " + str(offTime) + " seconds")
             break
     continue
