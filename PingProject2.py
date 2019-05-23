@@ -3,7 +3,7 @@ import subprocess  # For executing a shell command
 import time
 import RPi.GPIO as GPIO
 
-host= str("192.168.5.137")   # Change this IP address to whatever you want to test connection to.
+host= str("8.8.8.8")   # Change this IP address to whatever you want to test connection to.
 reboottime = 10
 timeafterreboot = 15
 sincereboot = 10     # Sets variable for since reboot so it wont keep power cycling (420 seconds for 7 minutes)
@@ -12,7 +12,7 @@ waittime= int(0)         # Sets waittime to 0 so it will immediately start runni
 running= str("yes") 
 
 
-GPIO.cleanup()
+#GPIO.cleanup()
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(12, GPIO.OUT)
@@ -48,8 +48,7 @@ while running == "yes":       # Starts the infinite loops since running will nev
         reboot()
         time.sleep(10)           
         offTime= 0
-    else:
-        pass
+        continue
     while waittime > 0:          
         print("Waiting " + str(waittime) + " seconds")
         time.sleep(1)
