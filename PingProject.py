@@ -16,7 +16,7 @@ GPIO.setup(12, GPIO.OUT)
 
 def reboot():
     GPIO.output(12, GPIO.HIGH)
-    for i in range(10, 0, -1):
+    for i in range(20, 0, -1):
         print("Your device will be powered on in " + str(i) + " seconds")
         time.sleep(1)
     GPIO.output(12, GPIO.LOW)
@@ -36,7 +36,7 @@ while running == "yes":
     while offTime > 20:
         print("Your device is rebooting")
         reboot()
-        time.sleep(10)
+        time.sleep(30)
         sincereboot = 20
         print("Testing after the reboot")
         offTime= 0
