@@ -60,12 +60,12 @@ while running == "yes":
         time.sleep(1)
         sincereboot = sincereboot - 1
         continue
-    while offTime > 20:
+    while offTime > 3:
         print(" Your device is rebooting")
         logger1.info("INITIALIZE REBOOT")
         reboot()
-        time.sleep(30)
-        sincereboot = 20
+        time.sleep(1)
+        sincereboot = 3
         print(" Testing after the reboot")
         offTime= 0
         break
