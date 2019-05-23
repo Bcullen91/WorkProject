@@ -2,8 +2,10 @@ import platform    # For getting the operating system name
 import subprocess  # For executing a shell command
 import time
 # import RPi.GPIO as GPIO
+#Adding Python's standard logger
+import logging
 
-host= str("8.8.8.8")  
+
 
 sincereboot = int(2)     
 offTime= int(0)         
@@ -13,6 +15,28 @@ running= str("yes")
 # GPIO.setwarnings(True)
 # GPIO.setmode(GPIO.BOARD)
 # GPIO.setup(12, GPIO.OUT)
+
+#Logger config
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s %(levelname)-8s %(message)s',
+                    datefmt='%m-%d %H:%M:%S',
+                    filename='./myapp.log',
+                    filemode='a')
+# Creating handler that writes debug messages to sys.stderr
+console = logging.StreamHandler()
+console.setLevel(logging.DEBUG)
+# Setting simple console format
+formatter = logging.Formatter('%(name)-12s: %(levelname)-8s %(message)s')
+# Assign format to handler
+console.setFormatter(formatter)
+# Adding handler to root logger
+logging.getLogger('').addHandler(console)
+# Set logger variable
+logger1 = logging.getLogger('mainLog')
+
+host = str("8.8.8.8")
+logger1.info("Host Assigned: " + host)
+
 
 def reboot():
     # GPIO.output(12, GPIO.HIGH)
