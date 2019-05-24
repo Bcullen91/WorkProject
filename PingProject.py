@@ -21,7 +21,7 @@ timestr = time.strftime("%Y%m%d")
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(levelname)-8s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
-                    filename='./myapp('+timestr +').log',
+                    filename='./logs/'+timestr +'-LOG.log',
                     filemode='a')
 # Creating handler that writes debug messages to sys.stderr
 console = logging.StreamHandler()
@@ -38,7 +38,7 @@ timestr2 = time.strftime("%Y-%m-%d")
 
 host = str("8.8.8.8")
 logger1.info("LOG STARTED: "+ timestr2)
-logger1.info("Host Assigned: " + host)
+logger1.info("TARGET ASSIGNED AS: " + host)
 
 
 def reboot():
@@ -80,18 +80,19 @@ while running == "yes":
         continue
     while waittime == 0:           
         while ping(host) == True:
-            logger1.info("TARGET (SUCCESS): " + host)
+            timestr3 = time.strftime("%H:%M:%S")
+            logger1.info("TARGET (SUCCESS): " + host + " At " + timestr3)
             print(" Connection is Online")
             waittime= 3
             offTime= 0
             break
         else:           
-            logger1.warn("TARGET (FAILED): " + host)
+            logger1.error("TARGET (FAILED): " + host)
             print(" Connection is now Offline")
             offTime= offTime + 7
             print(" The Connection has been offline for: ",end="")
             print(str(offTime) + " seconds",end='\r', flush=True)
-            logger1.info("CONNECTION DOWN FOR: " + str(offTime) + " SECONDS")
+            logger1.error("CONNECTION DOWN FOR: " + str(offTime) + " SECONDS")
             break
     continue
 else:
