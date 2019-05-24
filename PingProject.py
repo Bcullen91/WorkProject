@@ -81,15 +81,15 @@ while running == "yes":
     while waittime == 0:           
         while ping(host) == True:
             logger1.info("TARGET (SUCCESS): " + host)
-            print(" Google is Online")
+            print(" Connection is Online")
             waittime= 3
             offTime= 0
             break
         else:           
             logger1.warn("TARGET (FAILED): " + host)
-            print(" Google is now Offline")
+            print(" Connection is now Offline")
             offTime= offTime + 7
-            print(" The Google has been offline for: ",end="")
+            print(" The Connection has been offline for: ",end="")
             print(str(offTime) + " seconds",end='\r', flush=True)
             logger1.info("CONNECTION DOWN FOR: " + str(offTime) + " SECONDS")
             break
