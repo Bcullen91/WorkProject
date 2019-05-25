@@ -18,6 +18,8 @@ running= str("yes")
 
 #Logger config
 timestr = time.strftime("%Y%m%d")
+with open('./logs/'+timestr + '-LOGOUT.log', 'a') as f:
+    subprocess.call(['ping', '-n', '1', "8.8.8.8"], stdout=f)
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(levelname)-8s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
