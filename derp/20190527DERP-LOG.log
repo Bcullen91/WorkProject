@@ -1,0 +1,25 @@
+2019-05-27 15:42:06 INFO     Testing
+2019-05-27 15:42:38 INFO     Testing
+2019-05-27 15:44:19 INFO     Testing
+2019-05-27 15:44:28 INFO     time=23ms
+2019-05-27 15:44:28 INFO     time=17ms
+2019-05-27 15:44:28 INFO     time=24ms
+2019-05-27 15:44:28 INFO     time=19ms
+2019-05-27 15:44:28 INFO     time=16ms
+2019-05-27 15:44:28 INFO     time=16ms
+2019-05-27 15:44:28 INFO     time=26ms
+2019-05-27 15:44:28 INFO     time=24ms
+2019-05-27 15:44:28 INFO     time=21ms
+2019-05-27 15:44:28 INFO     time=26ms
+2019-05-27 15:44:40 INFO     Testing
+2019-05-27 15:44:40 ERROR    Error: Ping request could not
+2019-05-27 15:44:49 INFO     Testing
+2019-05-27 15:44:49 ERROR    Error: Ping request could not find host google.com. Please check the name and try again.
+2019-05-27 15:50:13 INFO     Testing
+2019-05-27 15:50:17 INFO     time=22ms
+2019-05-27 15:50:17 INFO     time=16ms
+2019-05-27 15:50:17 INFO     time=20ms
+2019-05-27 15:50:17 INFO     time=19ms
+2019-05-27 15:50:22 INFO     Testing
+2019-05-27 15:50:22 ERROR    Error: Ping request could not find host google.com. Please check the name and try again.
+2019-05-27 15:50:45 INFO     Testing
