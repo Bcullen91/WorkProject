@@ -1,0 +1,21 @@
+from tkinter import *
+import time
+
+root = Tk()
+x = 0
+
+def changeVariable():
+    x = x + 5
+
+button1 = Button(root, text="add 5", command=changeVariable)
+button1.pack()
+
+while True:
+    root.mainloop()
+    while x > 0:
+        print("X is greater than 0")
+        x = x - 1
+        time.sleep(1)
+    else:
+        print("Please click the button")
+        time.sleep(1)

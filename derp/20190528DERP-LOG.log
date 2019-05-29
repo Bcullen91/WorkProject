@@ -1,0 +1,13 @@
+
+2019-05-28 14:28:03 INFO     Testing
+2019-05-28 14:28:06 ERROR    Error: Ping request could not f
+2019-05-28 14:28:44 INFO     Testing
+2019-05-28 14:28:50 ERROR    Error: Ping request c
+2019-05-28 14:35:57 INFO     Testing
+2019-05-28 14:35:59 ERROR    Error:  could not find 
+2019-05-28 14:36:36 INFO     Testing
+2019-05-28 14:36:49 INFO     Testing
+2019-05-28 14:38:10 INFO     Testing
+2019-05-28 14:38:12 ERROR    Error: could not find host fasdfds. Please check the name and try again.
+2019-05-28 14:39:20 INFO     Testing
+2019-05-28 14:40:40 INFO     Testing

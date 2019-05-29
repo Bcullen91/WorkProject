@@ -13,16 +13,18 @@ logDerp = logging.getLogger('theLog')
 timestr2 = time.strftime("%Y-%m-%d")
 logDerp.info("Testing")
 
-hostname = "google.com"
+hostname = "fasdfds"
 
 pingResponse = subprocess.Popen(
     ["ping", hostname, "-n", '5'], stdout=subprocess.PIPE).stdout.read()
 pingResponse = pingResponse.decode()
 
 outs = re.findall(r'time=(\d+)', pingResponse)
-pingErs = re.findall(r'.*request could not.com', pingResponse)
+pingErs = re.findall(r'could not find\.$', pingResponse)
+
 for out in outs:
     logDerp.info("time="+out+"ms")
+
 for pingEr in pingErs:
     logDerp.error("Error: "+ pingEr)
 
