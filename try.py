@@ -13,17 +13,17 @@ logDerp = logging.getLogger('theLog')
 timestr2 = time.strftime("%Y-%m-%d")
 logDerp.info("Testing")
 
-hostname = "fasdfds"
+hostname = "55"
 
 pingResponse = subprocess.Popen(
     ["ping", hostname, "-n", '5'], stdout=subprocess.PIPE).stdout.read()
 pingResponse = pingResponse.decode()
 
 outs = re.findall(r'time=(\d+)', pingResponse)
-pingErs = re.findall(r"\w+(?=.)", pingResponse)
+pingErs = re.findall(r'^\w+', pingResponse)
 
-for out in outs:
-    logDerp.info("time="+out+"ms")
+# for out in outs:
+#     logDerp.info("time="+out+"ms")
 
 for pingEr in pingErs:
     logDerp.error("MODER01: "+ pingEr)
