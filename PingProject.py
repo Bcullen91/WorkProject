@@ -18,8 +18,6 @@ running= str("yes")
 
 #Logger config
 timestr = time.strftime("%Y%m%d")
-f = open('./logs/'+timestr + '-LOGOUT.log', 'a')
-    # subprocess.call(['ping', '-n', '1', "8.8.8.8"], stdout=f)
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(levelname)-8s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
@@ -39,7 +37,7 @@ logger1 = logging.getLogger('mainLog')
 timestr2 = time.strftime("%Y-%m-%d")
 
 host = str("8.8.8.8")
-logger1.info("LOG STARTED: "+ timestr2)
+logger1.debug("LOG STARTED: "+ timestr2)
 logger1.info("TARGET ASSIGNED AS: " + host)
 
 
@@ -56,7 +54,7 @@ def reboot():
 def ping(host):
     param = '-n' if platform.system().lower()=='windows' else '-c'
     command = ['ping', param, '1', host]
-    return subprocess.call(command, stdout=f) == 0
+    return subprocess.call(command) == 0
 
 while running == "yes":     
     while sincereboot > 0:
