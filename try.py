@@ -20,7 +20,7 @@ pingResponse = subprocess.Popen(
 pingResponse = pingResponse.decode()
 
 outs = re.findall(r'time=(\d+)', pingResponse)
-pingErs = re.findall(r'^\w+', pingResponse)
+pingErs = re.findall(r'', pingResponse)
 
 # for out in outs:
 #     logDerp.info("time="+out+"ms")
